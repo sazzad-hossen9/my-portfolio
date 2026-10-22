@@ -1,6 +1,6 @@
-# Sazzad Islam — Personal Portfolio Website
+# Sazzad Hossen — Personal Portfolio Website
 
-A personal portfolio website for **Sazzad Islam**, built with **Next.js (App Router)**, **TypeScript**, **Tailwind CSS**, and **JSON Server**.
+A personal portfolio website for **Sazzad Hossen**, built with **Next.js (App Router)**, **TypeScript**, **Tailwind CSS**, and **JSON Server**.
 
 ---
 

@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Project } from '@/types/portfolio';
 import { GithubIcon } from '@/components/SocialIcons';
-import TiltCard from '@/components/ui/TiltCard';
+import UnderwaterCard from '@/components/ui/UnderwaterCard';
 import {
   ExternalLink,
   FolderGit2,
@@ -67,8 +67,7 @@ export default function Projects({ projects }: ProjectsProps) {
                 transition={{ duration: 0.6, delay: index * 0.15 }}
                 className="h-full"
               >
-                <TiltCard className="h-full rounded-3xl" maxTilt={8} glare={true}>
-                  <div className="group flex flex-col h-full rounded-3xl bg-white/70 dark:bg-[#0E1520]/80 border border-slate-200/80 dark:border-[#8B5CF6]/20 hover:border-[#22C55E]/50 overflow-hidden backdrop-blur-xl shadow-lg shadow-[#8B5CF6]/5 hover:shadow-2xl hover:shadow-[#8B5CF6]/20 transition-colors duration-300">
+                <UnderwaterCard className="h-full" maxTilt={8} bobPhase={index * 1.2}>
                 {/* Project Screenshot Container */}
                 <div className="relative w-full h-52 sm:h-56 bg-slate-100 dark:bg-[#080D12] overflow-hidden border-b border-slate-200/70 dark:border-slate-800/80">
                   {!isImageError ? (
@@ -164,8 +163,7 @@ export default function Projects({ projects }: ProjectsProps) {
                   </div>
 
                 </div>
-              </div>
-              </TiltCard>
+                </UnderwaterCard>
             </motion.div>
             );
           })}

@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { Profile } from '@/types/portfolio';
 import { Code, BookOpen, Layers, Target, Compass, Sparkles, MapPin } from 'lucide-react';
 
-import TiltCard from '@/components/ui/TiltCard';
+import UnderwaterCard from '@/components/ui/UnderwaterCard';
 
 interface AboutProps {
   profile: Profile;
@@ -56,7 +56,7 @@ export default function About({ profile }: AboutProps) {
             <span>Get To Know Me</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            About <span className="text-[#8B5CF6]">Sazzad Islam</span>
+            About <span className="text-[#8B5CF6]">Sazzad Hossen</span>
           </h2>
           <p className="mt-3 text-slate-600 dark:text-slate-400 text-base sm:text-lg">
             A beginner Frontend Developer passionate about building modern, clean, and accessible web experiences.
@@ -130,23 +130,25 @@ export default function About({ profile }: AboutProps) {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
               >
-                <TiltCard maxTilt={5} glare={true} className="rounded-2xl">
-                  <div className="group p-5 rounded-2xl bg-white/60 dark:bg-[#0E1520]/60 border border-slate-200/70 dark:border-[#8B5CF6]/15 hover:border-[#22C55E]/40 hover:bg-white dark:hover:bg-[#0E1520] transition-colors duration-200 shadow-sm">
-                    <div className="flex items-start gap-4">
-                      <div className="p-2.5 rounded-xl bg-slate-100 dark:bg-[#080D12] border border-slate-200 dark:border-[#8B5CF6]/20 transition-colors group-hover:border-[#22C55E]/40">
-                        {pillar.icon}
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-slate-900 dark:text-white text-base">
-                          {pillar.title}
-                        </h4>
-                        <p className="mt-1 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                          {pillar.description}
-                        </p>
-                      </div>
+                <UnderwaterCard
+                  maxTilt={5}
+                  bobPhase={(idx * 0.8) % 3}
+                  className="rounded-2xl p-5"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="p-2.5 rounded-xl bg-slate-100 dark:bg-[#080D12] border border-slate-200 dark:border-[#8B5CF6]/20 transition-colors group-hover:border-[#22C55E]/40">
+                      {pillar.icon}
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-slate-900 dark:text-white text-base">
+                        {pillar.title}
+                      </h4>
+                      <p className="mt-1 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                        {pillar.description}
+                      </p>
                     </div>
                   </div>
-                </TiltCard>
+                </UnderwaterCard>
               </motion.div>
             ))}
           </div>

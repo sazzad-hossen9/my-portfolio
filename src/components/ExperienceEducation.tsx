@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Experience, Education } from '@/types/portfolio';
+import UnderwaterCard from '@/components/ui/UnderwaterCard';
 import { Briefcase, GraduationCap, Clock, Sparkles } from 'lucide-react';
 
 interface ExperienceEducationProps {
@@ -127,33 +128,40 @@ export default function ExperienceEducation({
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            whileHover={{ y: -3 }}
-            className="max-w-2xl mx-auto rounded-3xl bg-white/60 dark:bg-[#0E1520]/60 border border-slate-200/80 dark:border-[#8B5CF6]/20 p-8 sm:p-10 text-center backdrop-blur-md shadow-sm space-y-4 hover:border-[#8B5CF6]/40 transition-colors"
+            className="max-w-2xl mx-auto"
           >
-            <motion.div
-              animate={{ rotate: [0, 8, -8, 0] }}
-              transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
-              className="w-12 h-12 rounded-2xl bg-[#8B5CF6]/10 text-[#8B5CF6] mx-auto flex items-center justify-center"
+            <UnderwaterCard
+              maxTilt={4}
+              bobPhase={1.5}
+              className="p-8 sm:p-10 text-center rounded-3xl"
             >
-              <Sparkles className="w-6 h-6" />
-            </motion.div>
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white">
-              Currently Focusing on Skill Building & Projects
-            </h3>
-            <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
-              As a beginner frontend developer, I am actively building real-world projects and mastering core web technologies. Professional roles and formal credentials will be added here as I continue my journey.
-            </p>
-            <div className="pt-2">
-              <motion.a
-                whileHover={{ scale: 1.05, x: 2 }}
-                whileTap={{ scale: 0.95 }}
-                href="#projects"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-[#8B5CF6] hover:text-[#22C55E] transition-colors"
-              >
-                <span>Check out my personal projects above</span>
-                <span>&rarr;</span>
-              </motion.a>
-            </div>
+              <div className="space-y-4">
+                <motion.div
+                  animate={{ rotate: [0, 8, -8, 0] }}
+                  transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
+                  className="w-12 h-12 rounded-2xl bg-[#8B5CF6]/10 text-[#8B5CF6] mx-auto flex items-center justify-center"
+                >
+                  <Sparkles className="w-6 h-6" />
+                </motion.div>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                  Currently Focusing on Skill Building & Projects
+                </h3>
+                <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+                  As a beginner frontend developer, I am actively building real-world projects and mastering core web technologies. Professional roles and formal credentials will be added here as I continue my journey.
+                </p>
+                <div className="pt-2">
+                  <motion.a
+                    whileHover={{ scale: 1.05, x: 2 }}
+                    whileTap={{ scale: 0.95 }}
+                    href="#projects"
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-[#8B5CF6] hover:text-[#22C55E] transition-colors"
+                  >
+                    <span>Check out my personal projects above</span>
+                    <span>&rarr;</span>
+                  </motion.a>
+                </div>
+              </div>
+            </UnderwaterCard>
           </motion.div>
         )}
 

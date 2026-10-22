@@ -22,27 +22,27 @@ export default async function HomePage() {
         {/* Hero renders and animates in first for instant LCP */}
         <Hero profile={data.profile} socials={data.socials} />
         
-        {/* Consistent scroll-reveal wrapping for following sections */}
-        <RevealSection>
+        {/* Consistent scroll-reveal wrapping matching 3D room-to-room navigation */}
+        <RevealSection direction="right">
           <About profile={data.profile} />
         </RevealSection>
         
-        <RevealSection>
+        <RevealSection direction="left">
           <Skills skills={data.skills} />
         </RevealSection>
         
-        <RevealSection>
+        <RevealSection direction="right">
           <Projects projects={data.projects} />
         </RevealSection>
         
-        <RevealSection>
+        <RevealSection direction="left">
           <ExperienceEducation
             experience={data.experience}
             education={data.education}
           />
         </RevealSection>
         
-        <RevealSection>
+        <RevealSection direction="up">
           <Contact profile={data.profile} socials={data.socials} />
         </RevealSection>
       </main>

@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Skill } from '@/types/portfolio';
+import UnderwaterCard from '@/components/ui/UnderwaterCard';
 import {
   Code2,
   Palette,
@@ -105,52 +106,57 @@ export default function Skills({ skills }: SkillsProps) {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9, y: 10 }}
                 transition={{ duration: 0.4, delay: index * 0.04 }}
-                whileHover={{ y: -5, scale: 1.02 }}
-                className="group p-5 rounded-2xl bg-white/70 dark:bg-[#0E1520]/80 border border-slate-200/80 dark:border-[#8B5CF6]/20 hover:border-[#22C55E]/50 hover:bg-white dark:hover:bg-[#0E1520] backdrop-blur-md shadow-sm hover:shadow-xl hover:shadow-[#8B5CF6]/15 transition-colors duration-300 cursor-default"
+                className="h-full"
               >
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-[#8B5CF6]/10 dark:bg-[#8B5CF6]/15 flex items-center justify-center text-[#8B5CF6] group-hover:text-[#22C55E] group-hover:bg-[#22C55E]/10 transition-colors">
-                      {getCategoryIcon(skill.category)}
+                <UnderwaterCard
+                  className="rounded-2xl p-5 h-full"
+                  maxTilt={6}
+                  bobPhase={(index * 0.4) % 3}
+                >
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-[#8B5CF6]/10 dark:bg-[#8B5CF6]/15 flex items-center justify-center text-[#8B5CF6] group-hover:text-[#22C55E] group-hover:bg-[#22C55E]/10 transition-colors">
+                        {getCategoryIcon(skill.category)}
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-slate-900 dark:text-white text-base group-hover:text-[#8B5CF6] transition-colors">
+                          {skill.name}
+                        </h3>
+                        <span className="text-xs text-slate-500 dark:text-slate-400">
+                          {skill.category}
+                        </span>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="font-bold text-slate-900 dark:text-white text-base group-hover:text-[#8B5CF6] transition-colors">
-                        {skill.name}
-                      </h3>
-                      <span className="text-xs text-slate-500 dark:text-slate-400">
-                        {skill.category}
+
+                    {/* Level Badge */}
+                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-[#22C55E]/10 text-[#22C55E] border border-[#22C55E]/20">
+                      <CheckCircle2 className="w-3 h-3" />
+                      {skill.level}
+                    </span>
+                  </div>
+
+                  {/* Animated Learning Progress Indicator */}
+                  <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/80">
+                    <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-1.5">
+                      <span className="flex items-center gap-1">
+                        <Sparkles className="w-3 h-3 text-[#8B5CF6]" />
+                        <span>Learning Status</span>
+                      </span>
+                      <span className="font-medium text-slate-700 dark:text-slate-300">
+                        Active Practice
                       </span>
                     </div>
+                    <div className="w-full h-1.5 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: '70%' }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, ease: 'easeOut', delay: 0.15 }}
+                        className="h-full rounded-full bg-gradient-to-r from-[#8B5CF6] to-[#22C55E]"
+                      />
+                    </div>
                   </div>
-
-                  {/* Level Badge */}
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-[#22C55E]/10 text-[#22C55E] border border-[#22C55E]/20">
-                    <CheckCircle2 className="w-3 h-3" />
-                    {skill.level}
-                  </span>
-                </div>
-
-                {/* Animated Learning Progress Indicator */}
-                <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/80">
-                  <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-1.5">
-                    <span className="flex items-center gap-1">
-                      <Sparkles className="w-3 h-3 text-[#8B5CF6]" />
-                      <span>Learning Status</span>
-                    </span>
-                    <span className="font-medium text-slate-700 dark:text-slate-300">
-                      Active Practice
-                    </span>
-                  </div>
-                  <div className="w-full h-1.5 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: '70%' }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1, ease: 'easeOut', delay: 0.15 }}
-                      className="h-full rounded-full bg-gradient-to-r from-[#8B5CF6] to-[#22C55E]"
-                    />
-                  </div>
-                </div>
+                </UnderwaterCard>
               </motion.div>
             ))}
           </AnimatePresence>

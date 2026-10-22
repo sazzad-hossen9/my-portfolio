@@ -282,7 +282,7 @@ export default function Contact({ profile, socials }: ContactProps) {
                 Send a Message
               </h3>
               <p className="text-slate-600 dark:text-slate-400 text-sm mb-6">
-                Fill in the details below to compose an email directly to Sazzad Islam.
+                Fill in the details below to compose an email directly to Sazzad Hossen.
               </p>
 
               {isSubmitted && (

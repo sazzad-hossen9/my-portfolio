@@ -139,7 +139,7 @@ export default function Navbar({ resumeUrl = '/resume.pdf' }: NavbarProps) {
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.96 }}
                 href={resumeUrl}
-                download="Sazzad_Islam_Resume.pdf"
+                download="Sazzad_Hossen_Resume.pdf"
                 className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-[#8B5CF6] to-[#7C3AED] hover:from-[#7C3AED] hover:to-[#22C55E] rounded-xl shadow-md shadow-[#8B5CF6]/25 transition-all"
               >
                 <Download className="w-4 h-4" />
@@ -203,7 +203,7 @@ export default function Navbar({ resumeUrl = '/resume.pdf' }: NavbarProps) {
                 {resumeAvailable ? (
                   <a
                     href={resumeUrl}
-                    download="Sazzad_Islam_Resume.pdf"
+                    download="Sazzad_Hossen_Resume.pdf"
                     className="flex items-center justify-center gap-2 w-full py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-[#8B5CF6] to-[#22C55E] rounded-xl shadow-md"
                   >
                     <Download className="w-4 h-4" />
@@ -250,7 +250,7 @@ export default function Navbar({ resumeUrl = '/resume.pdf' }: NavbarProps) {
                 </p>
                 <div className="flex gap-3">
                   <a
-                    href="mailto:sazzad96741236@gmail.com?subject=Resume%20Request%20-%20Sazzad%20Islam"
+                    href="mailto:sazzad96741236@gmail.com?subject=Resume%20Request%20-%20Sazzad%20Hossen"
                     className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-white bg-gradient-to-r from-[#8B5CF6] to-[#22C55E] hover:opacity-95 transition-opacity"
                   >
                     <Mail className="w-4 h-4" />

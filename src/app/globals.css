@@ -17,7 +17,7 @@
 .dark {
   --bg-primary: #080D12;
   --bg-secondary: #0E1520;
-  --bg-card: rgba(14, 21, 32, 0.85);
+  --bg-card: rgba(10, 17, 30, 0.75);
   --border-color: rgba(139, 92, 246, 0.25);
   --text-primary: #F8FAFC;
   --text-secondary: #94A3B8;
@@ -111,4 +111,56 @@ html.lenis body {
     scroll-behavior: auto !important;
   }
 }
+
+/* Underwater Submerged Card Effects */
+@keyframes underwater-bob {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(0.35deg);
+  }
+}
+
+@keyframes caustics-shimmer {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+@keyframes bubble-float {
+  0% {
+    transform: translateY(20px) scale(0.5);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.6;
+  }
+  80% {
+    transform: translateY(-60px) scale(1.1);
+    opacity: 0.35;
+  }
+  100% {
+    transform: translateY(-90px) scale(1.3);
+    opacity: 0;
+  }
+}
+
+.underwater-caustics {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(6, 182, 212, 0.12) 0%,
+    rgba(139, 92, 246, 0.08) 40%,
+    transparent 75%
+  );
+  background-size: 200% 200%;
+  animation: caustics-shimmer 9s ease-in-out infinite;
+}
+
 
