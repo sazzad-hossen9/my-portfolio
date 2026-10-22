@@ -2,8 +2,10 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { Project } from '@/types/portfolio';
 import { GithubIcon } from '@/components/SocialIcons';
+import TiltCard from '@/components/ui/TiltCard';
 import {
   ExternalLink,
   FolderGit2,
@@ -23,14 +25,20 @@ export default function Projects({ projects }: ProjectsProps) {
   };
 
   return (
-    <section id="projects" className="py-20 lg:py-28 relative">
+    <section id="projects" className="py-20 lg:py-28 relative overflow-hidden">
       {/* Background ambient lighting */}
       <div className="absolute top-1/3 right-1/4 w-[450px] h-[450px] bg-[#8B5CF6]/10 blur-[140px] rounded-full pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#8B5CF6]/10 text-xs sm:text-sm font-semibold text-[#8B5CF6] mb-3">
             <FolderGit2 className="w-4 h-4" />
             <span>Featured Work</span>
@@ -41,20 +49,26 @@ export default function Projects({ projects }: ProjectsProps) {
           <p className="mt-3 text-slate-600 dark:text-slate-400 text-base sm:text-lg">
             Real-world web applications and frontend projects I designed and developed while learning modern web development.
           </p>
-        </div>
+        </motion.div>
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => {
+          {projects.map((project, index) => {
             const hasLiveUrl = project.liveUrl && project.liveUrl.trim().length > 0;
             const hasGithubUrl = project.githubUrl && project.githubUrl.trim().length > 0;
             const isImageError = imageErrors[project.id];
 
             return (
-              <div
+              <motion.div
                 key={project.id}
-                className="group flex flex-col rounded-3xl bg-white/70 dark:bg-[#0E1520]/80 border border-slate-200/80 dark:border-[#8B5CF6]/20 hover:border-[#22C55E]/50 overflow-hidden backdrop-blur-xl shadow-lg shadow-[#8B5CF6]/5 hover:shadow-2xl hover:shadow-[#8B5CF6]/15 transition-all duration-300 hover:-translate-y-1.5"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                className="h-full"
               >
+                <TiltCard className="h-full rounded-3xl" maxTilt={8} glare={true}>
+                  <div className="group flex flex-col h-full rounded-3xl bg-white/70 dark:bg-[#0E1520]/80 border border-slate-200/80 dark:border-[#8B5CF6]/20 hover:border-[#22C55E]/50 overflow-hidden backdrop-blur-xl shadow-lg shadow-[#8B5CF6]/5 hover:shadow-2xl hover:shadow-[#8B5CF6]/20 transition-colors duration-300">
                 {/* Project Screenshot Container */}
                 <div className="relative w-full h-52 sm:h-56 bg-slate-100 dark:bg-[#080D12] overflow-hidden border-b border-slate-200/70 dark:border-slate-800/80">
                   {!isImageError ? (
@@ -63,7 +77,7 @@ export default function Projects({ projects }: ProjectsProps) {
                       alt={project.title}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-108"
                       onError={() => handleImageError(project.id)}
                     />
                   ) : (
@@ -117,22 +131,26 @@ export default function Projects({ projects }: ProjectsProps) {
                     </div>
                   </div>
 
-                  {/* Action Buttons: Live Demo and GitHub (Only if valid URL) */}
+                  {/* Action Buttons: Live Demo and GitHub */}
                   <div className="pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center gap-3">
                     {hasLiveUrl && (
-                      <a
+                      <motion.a
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.97 }}
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-white bg-gradient-to-r from-[#8B5CF6] to-[#7C3AED] hover:from-[#7C3AED] hover:to-[#22C55E] shadow-sm shadow-[#8B5CF6]/25 transition-all hover:scale-[1.02]"
+                        className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-white bg-gradient-to-r from-[#8B5CF6] to-[#7C3AED] hover:from-[#7C3AED] hover:to-[#22C55E] shadow-sm shadow-[#8B5CF6]/25 transition-all"
                       >
                         <span>Live Demo</span>
                         <ExternalLink className="w-3.5 h-3.5" />
-                      </a>
+                      </motion.a>
                     )}
 
                     {hasGithubUrl && (
-                      <a
+                      <motion.a
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -141,12 +159,14 @@ export default function Projects({ projects }: ProjectsProps) {
                       >
                         <GithubIcon className="w-4 h-4" />
                         <span className="hidden sm:inline">Code</span>
-                      </a>
+                      </motion.a>
                     )}
                   </div>
 
                 </div>
               </div>
+              </TiltCard>
+            </motion.div>
             );
           })}
         </div>

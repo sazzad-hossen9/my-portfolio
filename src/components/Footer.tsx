@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Profile, Social } from '@/types/portfolio';
 import { GithubIcon, LinkedinIcon, FacebookIcon } from '@/components/SocialIcons';
 import {
@@ -47,9 +48,10 @@ export default function Footer({ profile, socials }: FooterProps) {
           
           {/* Brand Info */}
           <div className="md:col-span-6 space-y-3">
-            <a
+            <motion.a
+              whileHover={{ scale: 1.03 }}
               href="#home"
-              className="flex items-center gap-2 text-xl font-bold text-slate-900 dark:text-white"
+              className="inline-flex items-center gap-2 text-xl font-bold text-slate-900 dark:text-white"
             >
               <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-[#8B5CF6] to-[#22C55E] p-0.5 flex items-center justify-center">
                 <div className="w-full h-full bg-white dark:bg-[#080D12] rounded-[6px] flex items-center justify-center">
@@ -59,7 +61,7 @@ export default function Footer({ profile, socials }: FooterProps) {
               <span>
                 {profile.name} <span className="text-[#8B5CF6]">.dev</span>
               </span>
-            </a>
+            </motion.a>
             <p className="text-slate-600 dark:text-slate-400 text-sm max-w-md leading-relaxed">
               {profile.role} passionate about creating clean, accessible, and responsive web applications.
             </p>
@@ -71,21 +73,16 @@ export default function Footer({ profile, socials }: FooterProps) {
               Quick Navigation
             </h4>
             <div className="flex flex-col space-y-2 text-sm text-slate-600 dark:text-slate-400">
-              <a href="#home" className="hover:text-[#8B5CF6] transition-colors">
-                Home
-              </a>
-              <a href="#about" className="hover:text-[#8B5CF6] transition-colors">
-                About
-              </a>
-              <a href="#skills" className="hover:text-[#8B5CF6] transition-colors">
-                Skills
-              </a>
-              <a href="#projects" className="hover:text-[#8B5CF6] transition-colors">
-                Projects
-              </a>
-              <a href="#contact" className="hover:text-[#8B5CF6] transition-colors">
-                Contact
-              </a>
+              {['Home', 'About', 'Skills', 'Projects', 'Contact'].map((item) => (
+                <motion.a
+                  key={item}
+                  whileHover={{ x: 3 }}
+                  href={`#${item.toLowerCase()}`}
+                  className="hover:text-[#8B5CF6] transition-colors inline-block"
+                >
+                  {item}
+                </motion.a>
+              ))}
             </div>
           </div>
 
@@ -96,8 +93,10 @@ export default function Footer({ profile, socials }: FooterProps) {
             </h4>
             <div className="flex flex-wrap gap-2">
               {socials.map((social) => (
-                <a
+                <motion.a
                   key={social.id}
+                  whileHover={{ scale: 1.15, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -105,18 +104,20 @@ export default function Footer({ profile, socials }: FooterProps) {
                   className="p-2 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-[#22C55E] hover:border-[#22C55E]/40 hover:bg-[#22C55E]/5 transition-all"
                 >
                   {getSocialIcon(social.icon)}
-                </a>
+                </motion.a>
               ))}
             </div>
 
             <div className="pt-2">
-              <button
+              <motion.button
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={scrollToTop}
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#8B5CF6] hover:text-[#22C55E] transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#8B5CF6] hover:text-[#22C55E] transition-colors cursor-pointer"
               >
                 <span>Back to top</span>
                 <ArrowUp className="w-3.5 h-3.5" />
-              </button>
+              </motion.button>
             </div>
           </div>
 

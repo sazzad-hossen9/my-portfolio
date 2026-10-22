@@ -1,8 +1,11 @@
 'use client';
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Profile } from '@/types/portfolio';
 import { Code, BookOpen, Layers, Target, Compass, Sparkles, MapPin } from 'lucide-react';
+
+import TiltCard from '@/components/ui/TiltCard';
 
 interface AboutProps {
   profile: Profile;
@@ -37,11 +40,17 @@ export default function About({ profile }: AboutProps) {
   ];
 
   return (
-    <section id="about" className="py-20 lg:py-28 relative">
+    <section id="about" className="py-20 lg:py-28 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        {/* Section Heading with Motion */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#8B5CF6]/10 text-xs sm:text-sm font-semibold text-[#8B5CF6] mb-3">
             <Compass className="w-4 h-4" />
             <span>Get To Know Me</span>
@@ -52,14 +61,19 @@ export default function About({ profile }: AboutProps) {
           <p className="mt-3 text-slate-600 dark:text-slate-400 text-base sm:text-lg">
             A beginner Frontend Developer passionate about building modern, clean, and accessible web experiences.
           </p>
-        </div>
+        </motion.div>
 
         {/* Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Main Story & Background Card */}
-          <div className="lg:col-span-7 bg-white/70 dark:bg-[#0E1520]/80 rounded-3xl p-8 sm:p-10 border border-slate-200/80 dark:border-[#8B5CF6]/20 backdrop-blur-xl shadow-xl shadow-[#8B5CF6]/5 relative overflow-hidden space-y-6">
-            
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-7 bg-white/70 dark:bg-[#0E1520]/80 rounded-3xl p-8 sm:p-10 border border-slate-200/80 dark:border-[#8B5CF6]/20 backdrop-blur-xl shadow-xl shadow-[#8B5CF6]/5 relative overflow-hidden space-y-6"
+          >
             {/* Ambient Background Gradient Shape */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#8B5CF6]/10 to-[#22C55E]/5 blur-3xl -z-10 rounded-full" />
 
@@ -104,29 +118,36 @@ export default function About({ profile }: AboutProps) {
               </div>
             </div>
 
-          </div>
+          </motion.div>
 
-          {/* Right Column: 4 Core Focus Cards */}
+          {/* Right Column: 4 Core Focus Cards with Stagger & TiltCard */}
           <div className="lg:col-span-5 grid grid-cols-1 gap-4">
             {learningPillars.map((pillar, idx) => (
-              <div
+              <motion.div
                 key={idx}
-                className="group p-5 rounded-2xl bg-white/60 dark:bg-[#0E1520]/60 border border-slate-200/70 dark:border-[#8B5CF6]/15 hover:border-[#22C55E]/40 hover:bg-white dark:hover:bg-[#0E1520] transition-all hover:translate-x-1 duration-200 shadow-sm"
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
               >
-                <div className="flex items-start gap-4">
-                  <div className="p-2.5 rounded-xl bg-slate-100 dark:bg-[#080D12] border border-slate-200 dark:border-[#8B5CF6]/20 transition-colors group-hover:border-[#22C55E]/40">
-                    {pillar.icon}
+                <TiltCard maxTilt={5} glare={true} className="rounded-2xl">
+                  <div className="group p-5 rounded-2xl bg-white/60 dark:bg-[#0E1520]/60 border border-slate-200/70 dark:border-[#8B5CF6]/15 hover:border-[#22C55E]/40 hover:bg-white dark:hover:bg-[#0E1520] transition-colors duration-200 shadow-sm">
+                    <div className="flex items-start gap-4">
+                      <div className="p-2.5 rounded-xl bg-slate-100 dark:bg-[#080D12] border border-slate-200 dark:border-[#8B5CF6]/20 transition-colors group-hover:border-[#22C55E]/40">
+                        {pillar.icon}
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-slate-900 dark:text-white text-base">
+                          {pillar.title}
+                        </h4>
+                        <p className="mt-1 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                          {pillar.description}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-bold text-slate-900 dark:text-white text-base">
-                      {pillar.title}
-                    </h4>
-                    <p className="mt-1 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                      {pillar.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
+                </TiltCard>
+              </motion.div>
             ))}
           </div>
 
