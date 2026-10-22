@@ -1,0 +1,155 @@
+{
+  "profile": {
+    "id": 1,
+    "name": "Sazzad Islam",
+    "role": "Frontend Developer",
+    "greeting": "Hello, I'm",
+    "description": "I'm a frontend developer passionate about building modern, responsive, and user-friendly web applications using modern web technologies.",
+    "image": "/images/hero.png",
+    "location": "Bangladesh",
+    "email": "sazzad96741236@gmail.com",
+    "phone": "+8801635692211",
+    "resume": "/resume.pdf",
+    "github": "https://github.com/sazzad-hossen9",
+    "linkedin": "https://www.linkedin.com/in/sazzadhossendev/",
+    "facebook": "https://www.facebook.com/sazzad.islam.894369"
+  },
+  "projects": [
+    {
+      "id": 1,
+      "title": "Web Development Project",
+      "description": "A web development project showcasing my frontend development skills, responsive layouts, and modern user interface design.",
+      "image": "/images/devstack.png",
+      "technologies": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "React"
+      ],
+      "category": "Web Development",
+      "liveUrl": "https://bucolic-croquembouche-62d3d7.netlify.app/",
+      "githubUrl": "",
+      "featured": true
+    },
+    {
+      "id": 2,
+      "title": "FitLog",
+      "description": "A fitness-related web application project demonstrating my skills in creating interactive interfaces and responsive web experiences.",
+      "image": "/images/fitlog.png",
+      "technologies": [
+        "React",
+        "TypeScript",
+        "Tailwind CSS"
+      ],
+      "category": "Web Application",
+      "liveUrl": "https://fitlog-bay-ten.vercel.app/",
+      "githubUrl": "",
+      "featured": true
+    },
+    {
+      "id": 3,
+      "title": "Market Price",
+      "description": "A market price web application project showcasing my ability to build modern web interfaces and display structured information.",
+      "image": "/images/market-price.jpg",
+      "technologies": [
+        "Next.js",
+        "JavaScript",
+        "Tailwind CSS"
+      ],
+      "category": "Web Application",
+      "liveUrl": "https://market-price-gamma.vercel.app/",
+      "githubUrl": "",
+      "featured": true
+    }
+  ],
+  "skills": [
+    {
+      "id": 1,
+      "name": "HTML",
+      "category": "Frontend",
+      "level": "Beginner"
+    },
+    {
+      "id": 2,
+      "name": "CSS",
+      "category": "Frontend",
+      "level": "Beginner"
+    },
+    {
+      "id": 3,
+      "name": "JavaScript",
+      "category": "Programming",
+      "level": "Beginner"
+    },
+    {
+      "id": 4,
+      "name": "TypeScript",
+      "category": "Programming",
+      "level": "Beginner"
+    },
+    {
+      "id": 5,
+      "name": "Tailwind CSS",
+      "category": "Styling",
+      "level": "Beginner"
+    },
+    {
+      "id": 6,
+      "name": "Bootstrap",
+      "category": "Styling",
+      "level": "Beginner"
+    },
+    {
+      "id": 7,
+      "name": "React",
+      "category": "Frontend",
+      "level": "Beginner"
+    },
+    {
+      "id": 8,
+      "name": "Next.js",
+      "category": "Frontend",
+      "level": "Beginner"
+    },
+    {
+      "id": 9,
+      "name": "MongoDB",
+      "category": "Database",
+      "level": "Beginner"
+    }
+  ],
+  "experience": [],
+  "education": [],
+  "socials": [
+    {
+      "id": 1,
+      "platform": "GitHub",
+      "url": "https://github.com/sazzad-hossen9",
+      "icon": "github"
+    },
+    {
+      "id": 2,
+      "platform": "LinkedIn",
+      "url": "https://www.linkedin.com/in/sazzadhossendev/",
+      "icon": "linkedin"
+    },
+    {
+      "id": 3,
+      "platform": "Facebook",
+      "url": "https://www.facebook.com/sazzad.islam.894369",
+      "icon": "facebook"
+    },
+    {
+      "id": 4,
+      "platform": "Email",
+      "url": "mailto:sazzad96741236@gmail.com",
+      "icon": "mail"
+    },
+    {
+      "id": 5,
+      "platform": "WhatsApp",
+      "url": "https://wa.me/8801635692211",
+      "icon": "phone"
+    }
+  ]
+}
